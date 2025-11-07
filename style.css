@@ -52,17 +52,18 @@ header h1 {
     font-size: 0.9em;
 }
 
-/* Estilo do Botão de Download */
-.download-btn {
-    background-color: #27ae60; /* Cor verde para download */
+/* Estilo do Botão de Assistir (Watch Button) */
+.watch-btn {
+    background-color: #e74c3c; /* Cor de destaque para Assistir (Vermelho) */
     color: white;
     padding: 10px 15px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s;
+    white-space: nowrap; 
 }
 
-.download-btn:hover {
-    background-color: #2ecc71;
+.watch-btn:hover {
+    background-color: #c0392b;
 }
