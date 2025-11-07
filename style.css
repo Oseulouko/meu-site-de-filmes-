@@ -100,3 +100,38 @@ header h1 {
     border-color: #e74c3c;
     transform: scale(1.05); /* Pequeno zoom no item focado */
 }
+/* Estilos da Barra de Categorias */
+#categories {
+    text-align: center;
+    padding: 15px 0 30px;
+}
+
+#categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#categories a {
+    color: #bdc3c7; /* Cor do texto */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px; /* Aumentado para facilitar o foco na TV */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.2s;
+    font-size: 1.1em; /* Fonte um pouco maior para leitura a distância */
+}
+
+/* Destaque para o item Ativo ou Focado (Hover/Seta do Controle) */
+#categories a:hover,
+#categories a.active {
+    color: #ecf0f1; /* Cor do texto mais clara */
+    background-color: #e74c3c; /* Fundo vermelho para destaque (fácil de ver na TV) */
+    border-color: #e74c3c;
+    transform: scale(1.05); /* Pequeno zoom no item focado */
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); /* Sombra para indicar seleção na TV */
+}
