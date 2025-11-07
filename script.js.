@@ -1,0 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const categoriesList = document.querySelector('#categories ul');
+    const movieCards = document.querySelectorAll('.movie-card');
+
+    categoriesList.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            event.preventDefault();
+            const filterValue = event.target.getAttribute('href').substring(1);
+
+            // 1. Remove o destaque 'active' de todos os links e adiciona ao link clicado
+            document.querySelectorAll('#categories a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // 2. Filtra os filmes
+            movieCards.forEach(card => {
+                // 'all' mostra todos. Senão, verifica se o card tem a classe do filtro
+                if (filterValue === 'all' || card.classList.contains(filterValue)) {
+                    card.style.display = 'flex'; // Mostra o card
+                } else {
+                    card.style.display = 'none'; // Esconde o card
+                }
+            });
+        }
+    });
+
+    // Garante que a classe 'action' e 'release' que você usará no HTML fiquem escondidas por padrão, exceto quando 'Todos' estiver ativo.
+    // Isso é importante para que o filtro comece certo.
+    movieCards.forEach(card => {
+        if (!card.classList.contains('active')) {
+             card.style.display = 'none';
+        }
+    });
+});
