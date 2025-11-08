@@ -31,9 +31,11 @@ header h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.movie-card img {
-    width: 80px;
-    height: 120px;
+/* Ajuste o Iframe (vídeo incorporado) para caber no card */
+.movie-card iframe {
+    /* Garante que o iframe siga o tamanho da área de imagem */
+    width: 80px; 
+    height: 120px; 
     object-fit: cover;
     border-radius: 4px;
 }
