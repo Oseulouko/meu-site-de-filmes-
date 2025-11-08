@@ -22,57 +22,50 @@ header h1 {
 /* 1. ATIVA O LAYOUT DE GRADE (GRID) ESTILO STREAMING */
 #movie-list {
     display: grid;
-    /* 3 colunas por linha */
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas por linha */
     gap: 20px;
     padding-top: 30px;
     justify-content: center;
 }
 
-/* 2. MUDA O CARD PARA LAYOUT DE PÔSTER */
+/* 2. MUDA O CARD PARA LAYOUT DE PÔSTER (Vertical) */
 .movie-card {
     background-color: #34495e;
-    padding: 0; /* Remove padding externo */
+    padding: 0; 
     margin-bottom: 0;
     border-radius: 8px;
     display: flex; 
-    flex-direction: column; /* Organiza pôster em cima, texto embaixo */
+    flex-direction: column; /* Pôster em cima, texto embaixo */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
     overflow: hidden; 
 }
-/* Efeito Netflix/TV ao focar/hover */
+/* Efeito Zoom ao focar/hover (TV Style) */
 .movie-card:hover {
-    transform: scale(1.05); /* Zoom no cartaz */
+    transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     z-index: 10;
 }
 
 /* 3. ESTILO PARA AS IMAGENS (PÔSTERES) */
 .movie-card img {
-    width: 100%; /* Ocupa toda a largura do card */
-    height: 180px; /* Altura ideal para o poster no grid */
-    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-    border-radius: 8px 8px 0 0; /* Arredonda apenas o topo */
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+    border-radius: 8px 8px 0 0; 
     display: block;
 }
 
-/* 4. ESTILO DO LINK (PARA O CLIQUE NO POSTER) */
-.movie-card a {
-    text-decoration: none; /* Remove sublinhado */
-    color: inherit;
-}
-
-/* 5. AJUSTE O TEXTO (INFORMAÇÕES) */
+/* 4. AJUSTE O TEXTO (INFORMAÇÕES) */
 .movie-info {
-    padding: 10px 10px 15px 10px; /* Adiciona espaçamento interno */
+    padding: 10px 10px 15px 10px; 
     text-align: left;
 }
 
 .movie-info h2 {
     margin: 0 0 5px 0;
-    color: #f1c40f; /* Destaque amarelo */
+    color: #f1c40f;
     font-size: 1.1em;
 }
 
@@ -80,7 +73,6 @@ header h1 {
     margin: 0;
     font-size: 0.85em;
 }
-
 
 /* ESTILOS DA BARRA DE CATEGORIAS (Foco TV) */
 #categories {
@@ -94,18 +86,21 @@ header h1 {
     margin: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    /* Permite quebra de linha para muitos gêneros */
+    flex-wrap: wrap; 
+    gap: 20px 10px; /* Mais espaço vertical, menos horizontal */
 }
 
 #categories a {
     color: #bdc3c7; 
     text-decoration: none;
     font-weight: bold;
-    padding: 12px 20px; 
+    padding: 12px 15px; /* Ajustado para caber mais itens */
     border: 2px solid transparent;
     border-radius: 5px;
     transition: all 0.2s;
-    font-size: 1.1em; 
+    font-size: 1em; /* Fonte padrão */
+    white-space: nowrap;
 }
 
 /* Destaque para o item Ativo ou Focado (Hover/Seta do Controle) */
@@ -118,12 +113,7 @@ header h1 {
     box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); 
 }
 
-/* Remove estilos antigos do botão 'Assistir Agora' que não será mais usado no card */
-.watch-btn {
+/* Limpeza de classes antigas */
+.watch-btn, .movie-card iframe {
     display: none; 
-}
-
-/* Limpa resíduos de Iframe que não são mais necessários */
-.movie-card iframe {
-    display: none;
 }
