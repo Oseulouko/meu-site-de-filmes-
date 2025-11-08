@@ -19,57 +19,70 @@ header h1 {
     border-bottom: 2px solid #34495e;
 }
 
-/* Estilo do Card do Filme */
+/* 1. ATIVA O LAYOUT DE GRADE (GRID) ESTILO STREAMING */
+#movie-list {
+    display: grid;
+    /* 3 colunas por linha */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+/* 2. MUDA O CARD PARA LAYOUT DE PÔSTER */
 .movie-card {
     background-color: #34495e;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 0; /* Remove padding externo */
+    margin-bottom: 0;
     border-radius: 8px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
+    display: flex; 
+    flex-direction: column; /* Organiza pôster em cima, texto embaixo */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    overflow: hidden; 
+}
+/* Efeito Netflix/TV ao focar/hover */
+.movie-card:hover {
+    transform: scale(1.05); /* Zoom no cartaz */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    z-index: 10;
 }
 
-/* Ajuste o Iframe (vídeo incorporado) para caber no card */
-.movie-card iframe {
-    /* Garante que o iframe siga o tamanho da área de imagem */
-    width: 80px; 
-    height: 120px; 
-    object-fit: cover;
-    border-radius: 4px;
+/* 3. ESTILO PARA AS IMAGENS (PÔSTERES) */
+.movie-card img {
+    width: 100%; /* Ocupa toda a largura do card */
+    height: 180px; /* Altura ideal para o poster no grid */
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+    border-radius: 8px 8px 0 0; /* Arredonda apenas o topo */
+    display: block;
 }
 
+/* 4. ESTILO DO LINK (PARA O CLIQUE NO POSTER) */
+.movie-card a {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit;
+}
+
+/* 5. AJUSTE O TEXTO (INFORMAÇÕES) */
 .movie-info {
-    flex-grow: 1;
+    padding: 10px 10px 15px 10px; /* Adiciona espaçamento interno */
+    text-align: left;
 }
 
 .movie-info h2 {
     margin: 0 0 5px 0;
     color: #f1c40f; /* Destaque amarelo */
+    font-size: 1.1em;
 }
 
 .movie-info p {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.85em;
 }
 
-/* Estilo do Botão de Assistir (Watch Button) */
-.watch-btn {
-    background-color: #e74c3c; /* Cor de destaque para Assistir (Vermelho) */
-    color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    white-space: nowrap; 
-}
 
-.watch-btn:hover {
-    background-color: #c0392b;
-}
-/* Estilos da Barra de Categorias */
+/* ESTILOS DA BARRA DE CATEGORIAS (Foco TV) */
 #categories {
     text-align: center;
     padding: 15px 0 30px;
@@ -85,55 +98,32 @@ header h1 {
 }
 
 #categories a {
-    color: #bdc3c7; /* Cor do texto */
+    color: #bdc3c7; 
     text-decoration: none;
     font-weight: bold;
-    padding: 8px 15px;
+    padding: 12px 20px; 
     border: 2px solid transparent;
     border-radius: 5px;
     transition: all 0.2s;
-}
-
-/* Estilo para o link Ativo ou no Hover (para destaque na TV) */
-#categories a:hover,
-#categories a.active {
-    color: #ecf0f1; /* Cor do texto mais clara */
-    background-color: #e74c3c; /* Fundo vermelho para destaque (fácil de ver na TV) */
-    border-color: #e74c3c;
-    transform: scale(1.05); /* Pequeno zoom no item focado */
-}
-/* Estilos da Barra de Categorias */
-#categories {
-    text-align: center;
-    padding: 15px 0 30px;
-}
-
-#categories ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-#categories a {
-    color: #bdc3c7; /* Cor do texto */
-    text-decoration: none;
-    font-weight: bold;
-    padding: 12px 20px; /* Aumentado para facilitar o foco na TV */
-    border: 2px solid transparent;
-    border-radius: 5px;
-    transition: all 0.2s;
-    font-size: 1.1em; /* Fonte um pouco maior para leitura a distância */
+    font-size: 1.1em; 
 }
 
 /* Destaque para o item Ativo ou Focado (Hover/Seta do Controle) */
 #categories a:hover,
 #categories a.active {
-    color: #ecf0f1; /* Cor do texto mais clara */
-    background-color: #e74c3c; /* Fundo vermelho para destaque (fácil de ver na TV) */
+    color: #ecf0f1; 
+    background-color: #e74c3c; 
     border-color: #e74c3c;
-    transform: scale(1.05); /* Pequeno zoom no item focado */
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); /* Sombra para indicar seleção na TV */
+    transform: scale(1.05); 
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5); 
+}
+
+/* Remove estilos antigos do botão 'Assistir Agora' que não será mais usado no card */
+.watch-btn {
+    display: none; 
+}
+
+/* Limpa resíduos de Iframe que não são mais necessários */
+.movie-card iframe {
+    display: none;
 }
